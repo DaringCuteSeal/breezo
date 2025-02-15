@@ -1,5 +1,5 @@
-import { pb, PB_ADMIN_USER, PB_ADMIN_PASSWORD, PB_DB_URL, put_new_poll } from '$lib/db';
-import { type DBEntry, type PollData } from '$lib/db';
+import { pb, PB_ADMIN_USER, PB_ADMIN_PASSWORD, PB_DB_URL, put_new_poll } from '$lib/server/db';
+import { type DBEntry, type PollData } from '$lib/server/db';
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
