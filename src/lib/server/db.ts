@@ -58,7 +58,7 @@ export async function put_new_poll(data: PollData) {
 		longitude: data.long,
 		timestamp: dayjs().unix()
 	}
-	const record = await pb.collection(PB_POLLS_COLLECTION_NAME).create(item);
+	const record = await create(PB_POLLS_COLLECTION_NAME, item);
 	let id = record.id;
 
 	for (const [key, val] of Object.entries(data.readings)) {
@@ -67,8 +67,7 @@ export async function put_new_poll(data: PollData) {
 			name: key,
 			value: String(val)
 		}
-		await pb.collection(PB_READINGS_COLLECTION_NAME).create(entry);
-
+		await create(PB_READINGS_COLLECTION_NAME, entry);
 	}
 
 	return id;
