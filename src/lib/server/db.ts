@@ -7,7 +7,8 @@ function get_env_variable(name: string): string {
 		throw new Error(`Environment variable ${name} not defined!`)
 	}
 	return val
-}
+import { get_env_variable } from './env';
+import { create } from './db_helper';
 
 export const PB_DB_URL = get_env_variable("PB_DB_URL");
 export const PB_POLLS_COLLECTION_NAME = get_env_variable("PB_POLLS_COLLECTION_NAME");
