@@ -1,12 +1,5 @@
 import dayjs from 'dayjs';
 import PocketBase from 'pocketbase';
-
-function get_env_variable(name: string): string {
-	const val = process.env[name];
-	if (!val) {
-		throw new Error(`Environment variable ${name} not defined!`)
-	}
-	return val
 import { get_env_variable } from './env';
 import { create } from './db_helper';
 
@@ -45,6 +38,7 @@ export type DBEntry = {
 
 /** The poll data that clients can send via the **post endpoint**. */
 export type PollData = {
+	access_token: string,
 	lat: number,
 	long: number,
 	alt: number,
