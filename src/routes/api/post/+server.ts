@@ -19,16 +19,18 @@ export const POST = (async ({ request }) => {
 	try {
 		const item: PollData =  await request.json();
 		if (!await authorize(item.access_token)) {
-			return json({result: `error: unauthorized`})
+			return new Response(JSON.stringify({result: `error: unauthorized`}), {status: 401})
 		};
 
 		id = await put_new_poll(item);
 	} catch (err) {
-		return json({result: `error: ${err}`})
+		return new Response(JSON.stringify({result: `error: ${err}`}), {status: 400});
 	}
 
-	return json({
+	return new Response(JSON.stringify({
 		result: "ok",
 		id: id
-	})
+	}), {status: 200}
+	)
+
 }) satisfies RequestHandler;
