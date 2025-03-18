@@ -65,7 +65,7 @@ export async function put_new_poll(data: PollData) {
 
 	for (const [key, val] of Object.entries(data.readings)) {
 		if (!validate_datatype(val.datatype)) {
-			throw new Error(`${val.value} is not of a valid data type!`)
+			throw new Error(`'${key}' is not of a valid data type: '${val.datatype}'!`)
 		}
 		const entry: ReadingEntry = {
 			poll_id: id, // link to the previous record
